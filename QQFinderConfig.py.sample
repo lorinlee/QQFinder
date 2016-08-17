@@ -17,3 +17,71 @@ MYSQL_PASSWORD = ''
 MYSQL_DB = 'qq_finder'
 
 TASK_FILE = './task/task.dat'
+
+# table descrption
+
+# qq_group
+
+# CREATE TABLE `qq_group` (
+#   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+#   `g` tinyint(4) unsigned NOT NULL COMMENT '未知',
+#   `last_speak_time` varchar(10) NOT NULL,
+#   `tags` tinyint(4) NOT NULL COMMENT '未知',
+#   `lv_point` mediumint(8) unsigned NOT NULL COMMENT '等级分数',
+#   `qage` tinyint(3) unsigned NOT NULL COMMENT 'Q龄',
+#   `uin` varchar(20) NOT NULL COMMENT 'QQ',
+#   `nick` varchar(255) NOT NULL,
+#   `flag` tinyint(4) NOT NULL COMMENT '未知',
+#   `role` tinyint(4) NOT NULL COMMENT '未知',
+#   `lv_level` tinyint(3) unsigned NOT NULL,
+#   `join_time` varchar(10) NOT NULL,
+#   `card` varchar(255) NOT NULL,
+#   `group_id` varchar(20) NOT NULL,
+#   `update_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#   PRIMARY KEY (`id`),
+#   KEY `group` (`group_id`)
+# ) ENGINE=InnoDB AUTO_INCREMENT=9201 DEFAULT CHARSET=utf8
+
+# qq_user
+
+# CREATE TABLE `qq_user` (
+#   `id` int(11) NOT NULL AUTO_INCREMENT,
+#   `allow` tinyint(3) unsigned NOT NULL COMMENT '未知',
+#   `birthday_year` smallint(5) unsigned NOT NULL,
+#   `birthday_month` tinyint(3) unsigned NOT NULL,
+#   `birthday_day` tinyint(3) unsigned NOT NULL,
+#   `blood` tinyint(3) unsigned NOT NULL COMMENT '映射未知',
+#   `cft_flag` tinyint(3) unsigned NOT NULL COMMENT '未知',
+#   `city` varchar(255) NOT NULL,
+#   `college` varchar(255) NOT NULL,
+#   `constel` tinyint(3) unsigned NOT NULL,
+#   `country` varchar(255) NOT NULL,
+#   `email` varchar(255) NOT NULL,
+#   `extflag` varchar(255) NOT NULL,
+#   `face` varchar(255) NOT NULL,
+#   `flag` tinyint(3) unsigned NOT NULL COMMENT '未知',
+#   `gender` tinyint(3) unsigned NOT NULL,
+#   `gps_flag` tinyint(3) unsigned NOT NULL COMMENT '未知',
+#   `h_city` varchar(255) NOT NULL COMMENT '未知',
+#   `h_country` varchar(255) NOT NULL COMMENT '未知',
+#   `h_province` varchar(255) NOT NULL COMMENT '未知',
+#   `h_zone` varchar(255) NOT NULL COMMENT '未知',
+#   `homepage` varchar(255) NOT NULL,
+#   `lnick` varchar(255) NOT NULL COMMENT 'QQ签名',
+#   `mobile` varchar(20) NOT NULL,
+#   `nick` varchar(255) NOT NULL,
+#   `occupation` varchar(255) NOT NULL COMMENT '未知',
+#   `personal` varchar(255) NOT NULL COMMENT '未知',
+#   `phone` varchar(20) NOT NULL,
+#   `province` varchar(255) NOT NULL,
+#   `reg_type` tinyint(3) unsigned NOT NULL COMMENT '未知',
+#   `s_flag` tinyint(3) unsigned NOT NULL COMMENT '未知',
+#   `shengxiao` tinyint(3) unsigned NOT NULL,
+#   `stat` tinyint(3) unsigned NOT NULL,
+#   `uin` varchar(20) NOT NULL,
+#   `url` varchar(255) NOT NULL COMMENT '头像地址',
+#   `zone_id` varchar(255) NOT NULL COMMENT '未知',
+#   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#   PRIMARY KEY (`id`),
+#   KEY `uin` (`uin`)
+# ) ENGINE=InnoDB AUTO_INCREMENT=2805 DEFAULT CHARSET=utf8
