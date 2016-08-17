@@ -15,7 +15,6 @@
 
 import urllib
 import urllib2
-import LogConfig
 import json
 import QQFinderConfig
 
@@ -76,25 +75,40 @@ class QQUserFinder():
         # TODO 异常判断
         post_data = urllib.urlencode(self.post_data)
         request = urllib2.Request(QQUserFinder.url, post_data, self.headers)
-        response = urllib2.urlopen(request)
-        return response.read()
+        ret = None
+        try:
+            response = urllib2.urlopen(request)
+            ret = response.read()
+        except Exception, e:
+            print '[Error] Query: %d, ErrorMsg: %d %s' % (self.post_data['keyword'], e.args[0], e.args[1])
+        finally:
+            return ret
 
     def getUser(self, fmt='dict'):
         # TODO 异常判断
         info_json = self.fetchInfo()
-        info = json.loads(info_json)
-        user_dict = info['result']['buddy']['info_list'][0]
-        if fmt == 'dict':
-            return user_dict
-        elif fmt == 'json':
-            user_json = json.dumps(user_dict)
-            return user_json
-        # TODO User解析
-        elif fmt == 'xml':
-            return ''
-        elif fmt == 'user':
-            return ''
-
+        ret = None
+        try:
+            info = json.loads(info_json)
+            user_dict = info['result']['buddy']['info_list'][0]
+            user_dict['birthday_year'] = user_dict['birthday']['year']
+            user_dict['birthday_month'] = user_dict['birthday']['month']
+            user_dict['birthday_day'] = user_dict['birthday']['day']
+            del user_dict['birthday']
+            if fmt == 'dict':
+                ret = user_dict
+            elif fmt == 'json':
+                user_json = json.dumps(user_dict)
+                ret = user_json
+            # TODO User解析
+            elif fmt == 'xml':
+                ret = ''
+            elif fmt == 'user':
+                ret = ''
+        except Exception, e:
+            print '[Error] getUser Failed, ErrorMsg: %s' % (e)
+        finally:
+            return ret
 
 def test():
     myUser = QQUserFinder(qq=QQFinderConfig.QQ, skey=QQFinderConfig.SKEY, ldw=QQFinderConfig.LDW)

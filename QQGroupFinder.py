@@ -86,6 +86,10 @@ class QQGroupFinder:
         qq_group_json = self.fetchInfo()
         qq_group_dict = json.loads(qq_group_json)
         qq_group_member_dict = qq_group_dict['mems']
+        for qq_mem in qq_group_member_dict:
+            qq_mem['lv_point'] = qq_mem['lv']['point']
+            qq_mem['lv_level'] = qq_mem['lv']['level']
+            del qq_mem['lv']
         if fmt == 'dict':
             return qq_group_member_dict
         elif fmt == 'json':

@@ -20,6 +20,7 @@ because the auth is still unavailable, so it needs some extra information to mak
 
 4. bkn
     
+    the same as ldw
     unknown value, you can do a qq group finding in [qun.qq.com](http://qun.qq.com), also get it in network list
 
 5. keyword
